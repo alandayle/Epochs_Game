@@ -75,25 +75,51 @@ public class Intro implements Screen {
         timer+= delta;
         if (timer > 1 && timer < 2) {
             if (colorValue > 0F) {
-                colorValue -= 0.01F;
+                if (colorValue - 0.02F < 0F) {
+                    colorValue = 0F;
+                } else {
+                    colorValue -= 0.02F;
+                }
             }
         }
         if (timer > 2 && timer < 3) {
             if (colorValue < 1F) {
-                colorValue += 0.02F;
-                System.out.println("ano");
+                if (colorValue + 0.02F > 1F) {
+                    colorValue = 1F;
+                } else {
+                    colorValue += 0.02F;
+                }
             }
         }
         if (timer > 6 && timer < 8) {
             if (colorValue > 0F) {
-                colorValue -= 0.01F;
+                if (colorValue - 0.02F < 0F) {
+                    colorValue = 0F;
+                } else {
+                    colorValue -= 0.02F;
+                }
             }
         }
         if (timer > 8 && timer < 10) {
             if (colorValue < 1F) {
-                colorValue += 0.02F;
+                if (colorValue + 0.02F > 1F) {
+                    colorValue = 1F;
+                } else {
+                    colorValue += 0.02F;
+                }
             }
+
         }
+        if (timer > 10 && timer < 10.5) {
+                colorValue -= 0.01F;
+        } else if (timer > 10.5 && timer < 11){
+                colorValue += 0.01F;
+        } else if (timer > 11) {
+            timer = 10;
+            colorValue = 1F;
+        }
+
+
         batch.setColor(colorValue,colorValue, colorValue, 1);
         if (timer < 2) {
             batch.draw(logo, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
